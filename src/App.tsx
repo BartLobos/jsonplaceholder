@@ -9,6 +9,7 @@ import { About } from "./components/about/About";
 import { PostState } from "./context/post/PostState";
 import "./App.css";
 import { PostDetails } from "./components/posts/postDetails/PostDetails";
+import { NotFound } from "./components/notFound/NotFound";
 
 const App = () => {
   return (
@@ -17,9 +18,10 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<Posts />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/posts" element={<Posts />} />
             <Route path="/about" element={<About />} />
-            <Route path="/:id" element={<PostDetails />} />
+            <Route path="/posts/:id" element={<PostDetails />} />
           </Routes>
         </BrowserRouter>
       </PostState>

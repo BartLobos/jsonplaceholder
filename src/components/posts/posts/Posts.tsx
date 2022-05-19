@@ -1,22 +1,29 @@
 import { PostItem } from "../postItem/PostItem";
-import "./posts.scss";
 import { useContext, useEffect } from "react";
 import { PostContext } from "../../../context/post/postContext";
+import { Spinner } from "../../layout/spinner/Spinner";
+import "./posts.scss";
 
 export const Posts = () => {
   const postsContext = useContext(PostContext);
 
-  const { getPosts, posts } = postsContext;
+  const { getPosts, posts, loading } = postsContext;
   useEffect(() => {
     getPosts();
   }, []);
 
-  console.log(posts);
+  if (loading)
+    return (
+      <div className="posts">
+        <Spinner />
+      </div>
+    );
+
   return (
     <div>
       <ul className="posts">
         <li className="posts-header">
-          <div className="center"> All Posts:</div>
+          <div className="center"> All Posts: </div>
         </li>
         {posts.map((post: any) => (
           <li key={post.id}>

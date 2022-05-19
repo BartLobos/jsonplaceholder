@@ -9,7 +9,7 @@ export const Header = () => {
       </h1>
       <ul className="header-routes">
         <li className="header-routes__element">
-          <Link to="/" className="header-routes__link">
+          <Link to="/posts" className="header-routes__link">
             Posts
           </Link>
         </li>

@@ -2,11 +2,12 @@ import { postReducer } from "./postReducer";
 import { PostContext } from "./postContext";
 import { useReducer } from "react";
 import axios from "axios";
-import { GET_COMENTS, GET_POSTS, SET_LOADING } from "../types";
+import { GET_COMMENTS, GET_POSTS, SET_LOADING, GET_POST } from "../types";
+
 export const PostState = ({ children }) => {
   const [state, dispatch] = useReducer(postReducer, {
     posts: [],
-    post: {},
+    comments: [],
     loading: true,
   });
 
@@ -26,12 +27,21 @@ export const PostState = ({ children }) => {
     });
   };
 
-  const getComents = async (postId) => {
+  const getPost = async (postId) => {
+    setLoading();
+    const data = await api.get(`/posts/${postId}`);
+    dispatch({
+      type: GET_POST,
+      payload: data.data,
+    });
+  };
+
+  const getComments = async (postId) => {
     setLoading();
     const data = await api.get(`posts/${postId}/comments`);
     dispatch({
-      type: GET_COMENTS,
-      payload: data,
+      type: GET_COMMENTS,
+      payload: data.data,
     });
   };
 
@@ -41,8 +51,11 @@ export const PostState = ({ children }) => {
     <PostContext.Provider
       value={{
         getPosts,
-        getComents,
+        getPost,
+        getComments,
         posts: state.posts,
+        post: state.post,
+        comments: state.comments,
         loading: state.loading,
       }}
     >
