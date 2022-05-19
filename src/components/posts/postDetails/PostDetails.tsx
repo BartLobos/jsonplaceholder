@@ -24,32 +24,25 @@ export const PostDetails = () => {
     getComments(id);
   }, []);
   console.log(loading);
-  if (loading || post === undefined)
-    return (
-      <div className="comments">
-        <Spinner />
-      </div>
-    );
+  if (loading || post === undefined) return <Spinner />;
   return (
-    <div>
-      <ul className="comments">
-        <li className="comments-header">
-          <h4>{post.title}</h4>
-          <div>{post.body}</div>
+    <ul className="postDetails">
+      <li className="postDetails-header">
+        <h4>{post.title}</h4>
+        <div>{post.body}</div>
+      </li>
+      Comments:
+      {comments.map((comment: comment) => (
+        <li key={comment.id}>
+          <Comment
+            id={comment.id}
+            body={comment.body}
+            postId={comment.postId}
+            name={comment.name}
+            email={comment.email}
+          />
         </li>
-        Comments:
-        {comments.map((comment: comment) => (
-          <li key={comment.id}>
-            <Comment
-              id={comment.id}
-              body={comment.body}
-              postId={comment.postId}
-              name={comment.name}
-              email={comment.email}
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
+      ))}
+    </ul>
   );
 };

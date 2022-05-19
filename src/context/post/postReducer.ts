@@ -1,4 +1,11 @@
-import { GET_COMMENTS, GET_POSTS, SET_LOADING, GET_POST } from "../types";
+import {
+  GET_COMMENTS,
+  GET_POSTS,
+  SET_LOADING,
+  GET_POST,
+  GET_USERS,
+  GET_USER,
+} from "../types";
 import { state } from "../../types/Post";
 
 export const postReducer = (
@@ -15,13 +22,25 @@ export const postReducer = (
     case GET_POSTS:
       return {
         ...state,
-        posts: [...action.payload],
+        posts: action.payload,
         loading: false,
       };
     case GET_POST:
       return {
         ...state,
         post: action.payload,
+        loading: false,
+      };
+    case GET_USERS:
+      return {
+        ...state,
+        users: action.payload,
+        loading: false,
+      };
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload,
         loading: false,
       };
     case SET_LOADING:

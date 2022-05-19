@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { post } from "../../../types/Post";
-import "./post.scss";
+import "./postItem.scss";
 export const PostItem = ({ userId, id, title, body }: post) => {
   return (
     <div className="post">

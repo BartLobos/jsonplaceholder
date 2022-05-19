@@ -1,0 +1,14 @@
+.userItem {
+  background-color: #f3f8f2;
+  margin: 10px;
+  padding: 20px;
+  min-height: 100px;
+  border-radius: 10px;
+  text-align: center;
+
+  list-style-type: none;
+  &-link {
+    text-decoration: none;
+    color: black;
+  }
+}

@@ -2,6 +2,7 @@ import { PostItem } from "../postItem/PostItem";
 import { useContext, useEffect } from "react";
 import { PostContext } from "../../../context/post/postContext";
 import { Spinner } from "../../layout/spinner/Spinner";
+import { post } from "../../../types/Post";
 import "./posts.scss";
 
 export const Posts = () => {
@@ -25,7 +26,7 @@ export const Posts = () => {
         <li className="posts-header">
           <div className="center"> All Posts: </div>
         </li>
-        {posts.map((post: any) => (
+        {posts.map((post: post) => (
           <li key={post.id}>
             <PostItem
               id={post.id}

@@ -1,13 +1,13 @@
-.posts {
+.userDetails {
   list-style-type: none;
+  text-decoration: none;
 
   &-header {
     text-align: left;
-    font-size: 60px;
     background-color: #f77f00;
-    height: 70px;
+    min-height: 7 0px;
     margin: 10px;
-    padding-left: 20px;
+    padding: 10px;
     border-radius: 20px;
     border: 5px;
   }
