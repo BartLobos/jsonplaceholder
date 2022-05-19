@@ -1,18 +1,21 @@
-import { GET_POST, GET_POSTS, SET_LOADING } from "../types";
+import { GET_COMENTS, GET_POSTS, SET_LOADING } from "../types";
 import { state } from "../../types/Post";
 
-export default (state: state, action: { type: string; payload: any }) => {
+export const postReducer = (
+  state: state,
+  action: { type: string; payload: any }
+) => {
   switch (action.type) {
-    case GET_POST:
+    case GET_COMENTS:
       return {
         ...state,
-        post: action.payload,
+        coments: action.payload,
         loading: false,
       };
     case GET_POSTS:
       return {
         ...state,
-        posts: [...state.posts, ...action.payload],
+        posts: [...action.payload],
         loading: false,
       };
     case SET_LOADING:

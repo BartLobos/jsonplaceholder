@@ -8,6 +8,7 @@ import { Posts } from "./components/posts/posts/Posts";
 import { About } from "./components/about/About";
 import { PostState } from "./context/post/PostState";
 import "./App.css";
+import { PostDetails } from "./components/posts/postDetails/PostDetails";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Posts />} />
             <Route path="/about" element={<About />} />
+            <Route path="/:id" element={<PostDetails />} />
           </Routes>
         </BrowserRouter>
       </PostState>

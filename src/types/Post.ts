@@ -7,6 +7,14 @@ export type post = {
 
 export type state = {
   posts: post[];
-  post: post;
+  coments: coment[];
   loading: boolean;
+};
+
+export type coment = {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
 };
