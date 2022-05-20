@@ -1,3 +1,4 @@
+import { ReactChild } from "react";
 import { postReducer } from "./postReducer";
 import { PostContext } from "./postContext";
 import { useReducer } from "react";
@@ -9,15 +10,44 @@ import {
   GET_POST,
   GET_USERS,
   GET_USER,
-  GET_USER_POSTS,
 } from "../types";
+import { post, state } from "../../types/Post";
+type PostStateProps = {
+  children: ReactChild;
+};
 
-export const PostState = ({ children }) => {
-  const [state, dispatch] = useReducer(postReducer, {
+export const PostState = ({ children }: PostStateProps) => {
+  const initialState: state = {
     posts: [],
+    post: { userId: 0, title: "", id: 0, body: "" },
+    users: [],
+    user: {
+      id: 0,
+      name: "",
+      username: "",
+      email: "",
+      address: {
+        street: "",
+        suite: "",
+        city: "",
+        zipcode: "",
+        geo: {
+          lat: "",
+          lng: "",
+        },
+      },
+      phone: "",
+      website: "",
+      company: {
+        name: "",
+        catchPhrase: "",
+        bs: "",
+      },
+    },
     comments: [],
     loading: true,
-  });
+  };
+  const [state, dispatch] = useReducer(postReducer, initialState);
 
   const api = axios.create({
     baseURL: "https://jsonplaceholder.typicode.com",
@@ -35,13 +65,22 @@ export const PostState = ({ children }) => {
     });
   };
 
-  const getPost = async (postId) => {
+  const getPost = async (postId: number) => {
     setLoading();
     const data = await api.get(`/posts/${postId}`);
     dispatch({
       type: GET_POST,
       payload: data.data,
     });
+  };
+
+  const addPost = async ({ userId, title, body }: post) => {
+    const response = await api.post("/posts", {
+      title: title,
+      body: body,
+      userId: userId,
+    });
+    return response;
   };
 
   const getUsers = async () => {
@@ -53,7 +92,7 @@ export const PostState = ({ children }) => {
     });
   };
 
-  const getUser = async (userId) => {
+  const getUser = async (userId: number) => {
     setLoading();
     const data = await api.get(`/users/${userId}`);
     dispatch({
@@ -62,7 +101,7 @@ export const PostState = ({ children }) => {
     });
   };
 
-  const getUserPosts = async (userId) => {
+  const getUserPosts = async (userId: number) => {
     setLoading();
     const data = await api.get(`/users/${userId}/posts`);
     dispatch({
@@ -71,7 +110,7 @@ export const PostState = ({ children }) => {
     });
   };
 
-  const getComments = async (postId) => {
+  const getComments = async (postId: number) => {
     setLoading();
     const data = await api.get(`posts/${postId}/comments`);
     dispatch({
@@ -80,7 +119,7 @@ export const PostState = ({ children }) => {
     });
   };
 
-  const setLoading = () => dispatch({ type: SET_LOADING });
+  const setLoading = () => dispatch({ type: SET_LOADING, payload: null });
 
   return (
     <PostContext.Provider
@@ -96,6 +135,7 @@ export const PostState = ({ children }) => {
         users: state.users,
         getUser,
         user: state.user,
+        addPost,
         loading: state.loading,
       }}
     >
