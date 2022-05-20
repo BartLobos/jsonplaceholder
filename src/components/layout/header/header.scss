@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  z-index: -1;
+  height: 60px;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #f77f00;
+  font-size: large;
+
+  &-logo {
+    padding-left: 30px;
+  }
+
+  &-routes {
+    display: flex;
+    list-style-type: none;
+    &__element {
+      padding-right: 30px;
+    }
+    &__link {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}

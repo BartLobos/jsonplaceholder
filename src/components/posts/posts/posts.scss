@@ -1,0 +1,14 @@
+.posts {
+  list-style-type: none;
+
+  &-header {
+    text-align: left;
+    font-size: 60px;
+    background-color: #f77f00;
+    height: 70px;
+    margin: 10px;
+    padding-left: 20px;
+    border-radius: 20px;
+    border: 5px;
+  }
+}
