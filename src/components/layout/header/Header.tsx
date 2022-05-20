@@ -5,7 +5,7 @@ export const Header = () => {
     <nav className="header">
       <h1 className="header-logo">
         <i className={"fas fa-solid fa-camera-retro fa-1x"} />
-        {"Album"}
+        Album
       </h1>
       <ul className="header-routes">
         <li className="header-routes__element">
