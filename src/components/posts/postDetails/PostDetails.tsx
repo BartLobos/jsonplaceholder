@@ -23,7 +23,6 @@ export const PostDetails = () => {
     getPost(id);
     getComments(id);
   }, []);
-  console.log(loading);
   if (loading || post === undefined) return <Spinner />;
   return (
     <ul className="postDetails">

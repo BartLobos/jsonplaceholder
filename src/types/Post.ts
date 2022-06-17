@@ -3,13 +3,13 @@ export type state = {
   post: post;
   users: user[];
   user: user;
-  coments: comment[];
+  comments: comment[];
   loading: boolean;
 };
 
 export type post = {
   userId: number;
-  id: number;
+  id?: number;
   title: string;
   body: string;
 };
@@ -44,4 +44,12 @@ export type user = {
     catchPhrase: string;
     bs: string;
   };
+};
+
+export type locationType = {
+  hash: string;
+  key: string;
+  pathname: string;
+  search: string;
+  state: post;
 };

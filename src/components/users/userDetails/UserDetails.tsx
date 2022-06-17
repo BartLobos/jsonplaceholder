@@ -1,18 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { post, comment } from "../../../types/Post";
+import { Link, useLocation } from "react-router-dom";
+import { post, locationType } from "../../../types/Post";
 import { PostContext } from "../../../context/post/postContext";
 import { Spinner } from "../../layout/spinner/Spinner";
 import "./userDetails.scss";
 import { PostItem } from "../../posts/postItem/PostItem";
-
-type locationType = {
-  hash: string;
-  key: string;
-  pathname: string;
-  search: string;
-  state: post;
-};
 
 export const UserDetails = () => {
   let location: locationType = useLocation() as locationType;
@@ -29,11 +21,23 @@ export const UserDetails = () => {
 
   if (loading || user === undefined || posts === undefined) return <Spinner />;
   return (
-    <div className="userDetails">
-      <h4>{user.name}</h4>
-      <div>{user.email}</div>
+    <div className="user-details">
+      <div className="user-details--header">
+        <div>
+          <h4>{user.name}</h4>
+          <div>{user.email}</div>
+        </div>
+
+        <Link
+          to={`/users/${id}/newpost`}
+          className="user-details--header__button"
+        >
+          ADD POST
+        </Link>
+      </div>
+      <br />
       <h2>Posts:</h2>
-      <ul>
+      <ul className="user-details--list">
         {posts.map((post: post) => (
           <li key={post.id}>
             <PostItem

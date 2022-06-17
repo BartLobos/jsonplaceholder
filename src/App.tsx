@@ -12,27 +12,27 @@ import { PostDetails } from "./components/posts/postDetails/PostDetails";
 import { NotFound } from "./components/notFound/NotFound";
 import { Users } from "./components/users/users/Users";
 import { UserDetails } from "./components/users/userDetails/UserDetails";
+import { NewPost } from "./components/users/userDetails/newPost/NewPost";
 
 const App = () => {
   return (
-    <>
-      <PostState>
-        <BrowserRouter>
-          <Header />
-          <div className="content">
-            <Routes>
-              <Route path="*" element={<NotFound />} />
-              <Route path="/" element={<Posts />} />
-              <Route path="/users" element={<Users />} />
-              <Route path="/users/:id" element={<UserDetails />} />
-              <Route path="/posts" element={<Posts />} />
-              <Route path="/posts/:id" element={<PostDetails />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </PostState>
-    </>
+    <PostState>
+      <BrowserRouter>
+        <Header />
+        <div className="content">
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Posts />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/users/:id" element={<UserDetails />} />
+            <Route path="/users/:id/newpost" element={<NewPost />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:id" element={<PostDetails />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </PostState>
   );
 };
 
