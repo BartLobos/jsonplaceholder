@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { post, comment } from "../../../types/Post";
 import { PostContext } from "../../../context/post/postContext";
 import { Spinner } from "../../layout/spinner/Spinner";
@@ -26,14 +26,22 @@ export const PostDetails = () => {
   }, []);
 
   if (loading || post === undefined) return <Spinner />;
-
+  console.log(comments);
   return (
     <ul className="postDetails">
-      <li className="postDetails-header">
+      <li className="postDetails--header">
         <h4>{post.title}</h4>
         <div>{post.body}</div>
       </li>
-      Comments:
+      <div className="postDetails--content-header">
+        Comments:
+        <Link
+          to={`/posts/${id}/newcomment`}
+          className="postDetails--content-header__button"
+        >
+          ADD COMMENT
+        </Link>
+      </div>
       {comments.map((comment: comment) => (
         <li key={comment.id}>
           <Comment

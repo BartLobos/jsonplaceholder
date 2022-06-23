@@ -10,4 +10,32 @@
     border-radius: 20px;
     border: 5px;
   }
+  &--content-header {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+    font-size: 30px;
+    padding-top: 10px;
+
+    &__button {
+      background-color: #1282a2;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      height: 40px;
+      line-height: 20px;
+      list-style: none;
+      margin: 0;
+      outline: none;
+      padding: 10px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
 }
