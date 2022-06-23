@@ -1,9 +1,5 @@
 import { Header } from "./components/layout/header/Header";
-import {
-  BrowserRouter as BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Posts } from "./components/posts/posts/Posts";
 import { About } from "./components/about/About";
 import { PostState } from "./context/post/PostState";

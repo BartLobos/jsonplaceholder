@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
-import { PostfixUnaryOperator } from "typescript";
 import { PostContext } from "../../../../context/post/postContext";
 import { locationType } from "../../../../types/Post";
 import "./newPost.scss";
@@ -15,7 +14,6 @@ export const NewPost = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
   } = useForm<Inputs>();

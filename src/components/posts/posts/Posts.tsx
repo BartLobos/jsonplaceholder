@@ -11,6 +11,7 @@ export const Posts = () => {
   const { getPosts, posts, loading } = postsContext;
   useEffect(() => {
     getPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading)
