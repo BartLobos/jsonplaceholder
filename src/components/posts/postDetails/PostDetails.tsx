@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { post, comment } from "../../../types/Post";
 import { PostContext } from "../../../context/post/postContext";
@@ -22,8 +22,11 @@ export const PostDetails = () => {
   useEffect(() => {
     getPost(id);
     getComments(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   if (loading || post === undefined) return <Spinner />;
+
   return (
     <ul className="postDetails">
       <li className="postDetails-header">

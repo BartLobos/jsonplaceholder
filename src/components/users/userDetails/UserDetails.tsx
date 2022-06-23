@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { post, locationType } from "../../../types/Post";
 import { PostContext } from "../../../context/post/postContext";
@@ -17,6 +17,7 @@ export const UserDetails = () => {
   useEffect(() => {
     getUser(id);
     getUserPosts(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading || user === undefined || posts === undefined) return <Spinner />;
