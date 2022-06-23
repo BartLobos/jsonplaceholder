@@ -50,7 +50,7 @@ export const PostState = ({ children }: PostStateProps) => {
   const [state, dispatch] = useReducer(postReducer, initialState);
 
   const api = axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com",
+    baseURL: "https://pwoprojectbackend.azurewebsites.net/api",
     headers: {
       "Content-type": "application/json",
     },
