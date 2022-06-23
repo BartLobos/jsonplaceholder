@@ -12,7 +12,7 @@ export const Users = () => {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [getUsers]);
 
   if (loading || users === undefined)
     return (
