@@ -20,7 +20,7 @@ export const NewComment = () => {
     } = useForm<Inputs>();
 
     let location: locationType = useLocation() as locationType;
-    const id = location.pathname.slice(7, location.pathname.length - 11);
+    const id = location.pathname.slice(56, location.pathname.length - 11);
     const onSubmit = async ({ title, body, email }: Inputs) => {
         const response = await addComment({
             postId: parseInt(id),
