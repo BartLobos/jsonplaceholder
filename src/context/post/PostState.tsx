@@ -11,7 +11,7 @@ import {
   GET_USERS,
   GET_USER,
 } from "../types";
-import { post, state } from "../../types/Post";
+import { comment, post, state } from "../../types/Post";
 type PostStateProps = {
   children: ReactChild;
 };
@@ -119,6 +119,15 @@ export const PostState = ({ children }: PostStateProps) => {
     });
   };
 
+  const addComment = async ({ postId, id, name, email, body }: comment) => {
+    const response = await api.post(`/posts/${postId}/comments`, {
+      name: name,
+      body: body,
+      email: email,
+    });
+    return response;
+  };
+
   const setLoading = () => dispatch({ type: SET_LOADING, payload: null });
 
   return (
@@ -129,6 +138,7 @@ export const PostState = ({ children }: PostStateProps) => {
         getPost,
         getUserPosts,
         post: state.post,
+        addComment,
         getComments,
         comments: state.comments,
         getUsers,

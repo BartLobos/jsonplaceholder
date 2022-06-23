@@ -9,6 +9,7 @@ import { NotFound } from "./components/notFound/NotFound";
 import { Users } from "./components/users/users/Users";
 import { UserDetails } from "./components/users/userDetails/UserDetails";
 import { NewPost } from "./components/users/userDetails/newPost/NewPost";
+import { NewComment } from "./components/posts/postDetails/newComment/NewComment";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/users/:id/newpost" element={<NewPost />} />
             <Route path="/posts" element={<Posts />} />
             <Route path="/posts/:id" element={<PostDetails />} />
+            <Route path="/posts/:id/newcomment" element={<NewComment />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </div>
