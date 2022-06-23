@@ -23,7 +23,7 @@ export const NewComment = () => {
     const id = location.pathname.slice(7, location.pathname.length - 11);
     const onSubmit = async ({ title, body, email }: Inputs) => {
         const response = await addComment({
-            userId: id,
+            postId: parseInt(id),
             email: email,
             name: title,
             body: body,
