@@ -24,7 +24,7 @@ export const NewComment = () => {
     location.pathname.search("posts/") + 6,
     location.pathname.length - 11
   );
-
+  console.log(id);
   const onSubmit = async ({ title, body, email }: Inputs) => {
     const response = await addComment({
       postId: parseInt(id),
