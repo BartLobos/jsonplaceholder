@@ -61,7 +61,6 @@ export const PostState = ({ children }: PostStateProps) => {
   const getPosts = async () => {
     setLoading();
     const data = await api.get("/posts");
-    console.log(data);
     dispatch({
       type: GET_POSTS,
       payload: data.data,
@@ -78,13 +77,6 @@ export const PostState = ({ children }: PostStateProps) => {
   };
 
   const addPost = async ({ userId, title, body }: post) => {
-    console.log(userId);
-
-    console.log({
-      title: title,
-      body: body,
-      userId: userId,
-    });
     const response = await api.post("/posts", {
       title: title,
       body: body,

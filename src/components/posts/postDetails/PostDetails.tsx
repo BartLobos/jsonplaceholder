@@ -26,7 +26,7 @@ export const PostDetails = () => {
   }, []);
 
   if (loading || post === undefined) return <Spinner />;
-  console.log(comments);
+
   return (
     <ul className="postDetails">
       <li className="postDetails--header">
